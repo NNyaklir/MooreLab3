@@ -16,7 +16,7 @@ run: compile
 	./compile
 
 run_powTwoTest: powTwoTest.o powTwo.o
-    ${CC} -o powTwoTest $^
+    ${CC} -o powTwoTest $@ $^
     ./powTwoTest
 
 clean:
