@@ -1,5 +1,5 @@
 CC   = cc
-OBJS = main.o build_tree.o backend.o powTwo.o powTwoTest.o
+OBJS = main.o build_tree.o backend.o
 
 CFLAGS = -O3 -g3 -Wall -Wextra -Werror=format-security -Werror=implicit-function-declaration \
          -Wshadow -Wpointer-arith -Wcast-align -Wstrict-prototypes -Wwrite-strings
