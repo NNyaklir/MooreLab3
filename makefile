@@ -1,23 +1,22 @@
 CC   = cc
-OBJS = main.o build_tree.o backend.o 
-TEST_OBJS = powTwo.o powTwoTest.o
+OBJS = main.o build_tree.o backend.o powTwo.o powTwoTest.o
 
 CFLAGS = -O3 -g3 -Wall -Wextra -Werror=format-security -Werror=implicit-function-declaration \
          -Wshadow -Wpointer-arith -Wcast-align -Wstrict-prototypes -Wwrite-strings
 
-all: compile powTwoTest
+all: compile
 
 %.o: %.c
 	${CC} $(CFLAGS) -c -o $@ $<
 
-compile: $(OBJS) $(TEST_OBJS)
-	${CC} -o compile $@ $^
+compile: $(OBJS) 
+	${CC} -o $@ $^
 
 run: compile
 	./compile
 
-test: $(TEST_OBJS)
-    ${CC} -o powTwoTest $(TEST_OBJS)
+run_powTwoTest: powTwoTest.o powTwo.o
+    ${CC} -o powTwoTest $@ $^
     ./powTwoTest
 
 clean:
