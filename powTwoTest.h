@@ -1,7 +1,7 @@
 #ifndef __POWTWOTEST_H
 #define __POWTWOTEST_H
 
-int runPowTest();
+void runPowTest();
 int showTestResults( int num, int testNum);
 
 

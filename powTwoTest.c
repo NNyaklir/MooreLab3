@@ -5,11 +5,11 @@
 #include "powTwo.h"
 #include "powTwoTest.h"
 
-int runPowTest() {
-    srand(time(NULL)); //rand nums
+void runPowTest() {
+   // srand(time(NULL)); //rand nums
 
-    unsigned int num = rand();
-    printf("number : ", num);
+    //unsigned int num = rand();
+    //printf("number : ", num);
 
     
     //nvm just gonna hard code it
