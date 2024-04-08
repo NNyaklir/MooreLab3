@@ -30,7 +30,7 @@ int runPowTest() {
 
 int showTestResults( int num, int testNum){
     int result = powerOfTwo(num);
-    printf ("Test %d:\n",testNum);
+    printf ("Test %u:\n",testNum);
     if (result!=0){
     
         printf("%u is a power of two , the log is %d. \n",num,result);
