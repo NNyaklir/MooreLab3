@@ -28,7 +28,7 @@ void runPowTest() {
 
 }
 
-int showTestResults( int num, int testNum){
+void showTestResults( int num, int testNum){
     int result = powerOfTwo(num);
     printf ("Test %u:\n",testNum);
     if (result!=0){

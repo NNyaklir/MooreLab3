@@ -2,7 +2,7 @@
 #define __POWTWOTEST_H
 
 void runPowTest();
-int showTestResults( int num, int testNum);
+void showTestResults( int num, int testNum);
 
 
 #endif
