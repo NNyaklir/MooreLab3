@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <math.h>
 
-int isPowerOfTwo(unsigned int n) {
+int powerOfTwo(unsigned int n) {
     if (n == 0)
         return 0;
     
