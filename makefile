@@ -23,7 +23,7 @@ testPowTwo: $(TESTO)
 #	./powTest
 
 clean:
-	rm -f *.o compile powTest
+	rm -f *.o compile testPowTwo
 
 backend.o: backend.c
 build_tree.o: build_tree.c build_tree.h
