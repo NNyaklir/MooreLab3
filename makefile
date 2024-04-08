@@ -16,16 +16,10 @@ compile: $(OBJS) $(TEST_OBJS)
 run: compile
 	./compile
 
-powTwoTest: $(TEST_OBJS)
-    ${CC} -o powTwoTest $(TEST_OBJS)
-    ./powTwoTest
-
 clean:
-	rm -f *.o compile powTwoTest
+	rm -f *.o compile
 
 backend.o: backend.c
 build_tree.o: build_tree.c build_tree.h
 main.o: main.c 
 
-powTwo.o: powTwo.c powTwo.h
-powTwoTest.o: powTwoTest.c powTwoTest.h powTwo.h
