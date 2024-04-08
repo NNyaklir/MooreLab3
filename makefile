@@ -16,7 +16,7 @@ compile: $(OBJS) $(TEST_OBJS)
 run: compile
 	./compile
 
-powTwoTest: $(TEST_OBJS)
+test: $(TEST_OBJS)
     ${CC} -o powTwoTest $(TEST_OBJS)
     ./powTwoTest
 
