@@ -32,14 +32,22 @@ const operator_t optable[NUMOPTYPES] = {
     {BINARYOP, 4, LR, ">>", "srl"}, {UNARYOP, 0, LR, "(", ""},
     {UNARYOP, 0, LR, ")", ""}};
 
-static int __read_variable(const char expr[], const size_t i,
-                           nodestack_t *nstack) {
+static int __read_variable(const char expr[], const size_t i, nodestack_t *nstack) {
   void *p;
-  int var;
+  char var[6]; //max length of varaible
+  int j, varIndex;
+
+  //loop to determine the variable name
+  for (j = 0; j < 5 && isalnum(expr[i+j]) || expr[i+j] == '_'; j++) {
+        var[j] = expr[i+j];
+    }
+  var[j] = '\0';
+  varIndex =lookup_var(var); //convert from var to index
 
   // push node on the nodestack
   if (nstack->top < MAXNODES) {
-    var = (int)(expr[i] - 'a');
+    
+    //var = (int)(expr[i] - 'a');
     assign_reg(var);
 
     if ((p = __new_node(VAR, var)) == NULL) {
