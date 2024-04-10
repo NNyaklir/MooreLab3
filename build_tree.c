@@ -32,33 +32,17 @@ const operator_t optable[NUMOPTYPES] = {
     {BINARYOP, 4, LR, ">>", "srl"}, {UNARYOP, 0, LR, "(", ""},
     {UNARYOP, 0, LR, ")", ""}};
 
-static int __read_variable(const char expr[], size_t i, nodestack_t *nstack) {
+static int __read_variable(const char expr[], const size_t i,
+                           nodestack_t *nstack) {
   void *p;
-  int maxV = 5;
-  char var[maxV + 1]; // Define array to store variable name
-  int var_index = 0;
-  size_t index = i; // Declare a local variable to use as an index
+  int var;
 
-  // Extract the variable name
-  while (expr[index] != '\0' && (isalnum(expr[index]) || expr[index] == '_')) {
-    if (var_index >= maxV) {
-      printf("Error: variable name too long\n");
-      return 1;
-    }
-    var[var_index] = expr[index];
-    var_index++, index++;
-
-    // If the current character is not alphanumeric or underscore, break the loop
-    if (!isalnum(expr[index]) && expr[index] != '_') {
-      break;
-    }
-  }
-  var[var_index] = '\0'; // Null-terminate the string
-
-  // Push node on the nodestack
+  // push node on the nodestack
   if (nstack->top < MAXNODES) {
-    assign_reg(nstack->top); // Assign a register for the variable
-    if ((p = __new_node(VAR, strdup(var))) == NULL) { // Allocate memory for the variable name
+    var = (int)(expr[i] - 'a');
+    assign_reg(var);
+
+    if ((p = __new_node(VAR, var)) == NULL) {
       __error_no_memory();
       return 1;
     }
