@@ -35,14 +35,27 @@ const operator_t optable[NUMOPTYPES] = {
 static int __read_variable(const char expr[], const size_t i,
                            nodestack_t *nstack) {
   void *p;
-  int var;
+  int MAXVARLENGTH=6;
+  char var[MAXVARLENGTH + 1]; // Define array to store variable name
+  int var_index = 0;
+  size_t index=i;
 
-  // push node on the nodestack
+  // Extract the variable name
+  while (isalnum(expr[index]) || expr[index] == '_') {
+    if (var_index >= MAXVARLENGTH) {
+      printf("Error: variable name too long\n");
+      return 1;
+    }
+    var[var_index] = expr[index];
+    var_index++;
+    index++;
+  }
+  var[var_index] = '\0'; // Null-terminate the string
+
+  // Push node on the nodestack
   if (nstack->top < MAXNODES) {
-    var = (int)(expr[i] - 'a');
-    assign_reg(var);
-
-    if ((p = __new_node(VAR, var)) == NULL) {
+    assign_reg(nstack->top); // Assign a register for the variable
+    if ((p = __new_node(VAR, strdup(var))) == NULL) { // Allocate memory for the variable name
       __error_no_memory();
       return 1;
     }
@@ -55,6 +68,7 @@ static int __read_variable(const char expr[], const size_t i,
 
   return 0;
 }
+
 
 static int __read_digit(const char expr[], size_t *j, nodestack_t *nstack) {
   void *p;
