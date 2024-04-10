@@ -6,7 +6,7 @@
 #include "powTwoTest.h"
 #include "powTwo.c"
 
-int main() {
+int main(void) {
    // srand(time(NULL)); //rand nums
 
     //unsigned int num = rand();
