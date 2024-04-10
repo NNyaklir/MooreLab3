@@ -4,7 +4,7 @@
 #include <math.h>
 #include "powTwo.h"
 #include "powTwoTest.h"
-#include "powTwo.c"
+
 
 int main(void) {
    // srand(time(NULL)); //rand nums
