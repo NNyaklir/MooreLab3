@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <math.h>
+#include "powTwo.h"
 
 int powerOfTwo(unsigned int n) {
     if (n == 0)
