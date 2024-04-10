@@ -34,7 +34,7 @@ const operator_t optable[NUMOPTYPES] = {
 
 static int __read_variable(const char expr[], size_t i, nodestack_t *nstack) {
   void *p;
-  int maxV=5;
+  int maxV = 5;
   char var[maxV + 1]; // Define array to store variable name
   int var_index = 0;
   size_t index = i; // Declare a local variable to use as an index
@@ -46,8 +46,8 @@ static int __read_variable(const char expr[], size_t i, nodestack_t *nstack) {
       return 1;
     }
     var[var_index] = expr[index];
-    var_index++,index++;
-    
+    var_index++, index++;
+
     // If the current character is not alphanumeric or underscore, break the loop
     if (!isalnum(expr[index]) && expr[index] != '_') {
       break;
@@ -71,6 +71,7 @@ static int __read_variable(const char expr[], size_t i, nodestack_t *nstack) {
 
   return 0;
 }
+
 
 
 static int __read_digit(const char expr[], size_t *j, nodestack_t *nstack) {
