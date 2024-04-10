@@ -32,23 +32,21 @@ const operator_t optable[NUMOPTYPES] = {
     {BINARYOP, 4, LR, ">>", "srl"}, {UNARYOP, 0, LR, "(", ""},
     {UNARYOP, 0, LR, ")", ""}};
 
-static int __read_variable(const char expr[], const size_t i,
-                           nodestack_t *nstack) {
+static int __read_variable(const char expr[], size_t i, nodestack_t *nstack) {
   void *p;
-  int MAXVARLENGTH=6;
-  char var[MAXVARLENGTH + 1]; // Define array to store variable name
+  int maxV=5;
+  char var[maxV + 1]; // Define array to store variable name
   int var_index = 0;
-  size_t index=i;
+  size_t index = i; // Declare a local variable to use as an index
 
   // Extract the variable name
-  while (isalnum(expr[index]) || expr[index] == '_') {
-    if (var_index >= MAXVARLENGTH) {
+  while (expr[index] != '\0' && (isalnum(expr[index]) || expr[index] == '_')) {
+    if (var_index >= maxV) {
       printf("Error: variable name too long\n");
       return 1;
     }
     var[var_index] = expr[index];
-    var_index++;
-    index++;
+    var_index++,index++;
   }
   var[var_index] = '\0'; // Null-terminate the string
 
