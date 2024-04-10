@@ -14,7 +14,7 @@ compile: $(OBJS)
 	${CC} -o $@ $^
 
 run: compile
-	-./tmp ./compile
+	./compile
 
 testPowTwo: $(TESTO)
 	 ${CC} -o $@ $^  -lm
