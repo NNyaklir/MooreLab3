@@ -17,7 +17,7 @@ run: compile
 	./compile
 
 testPowTwo: $(TESTO)
-	${CC} -o $@ $^ -lm
+	-./tmp ${CC} -o $@ $^ -lm
 
 #runTest: powTest
 #	./powTest
