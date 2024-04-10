@@ -47,6 +47,11 @@ static int __read_variable(const char expr[], size_t i, nodestack_t *nstack) {
     }
     var[var_index] = expr[index];
     var_index++,index++;
+    
+    // If the current character is not alphanumeric or underscore, break the loop
+    if (!isalnum(expr[index]) && expr[index] != '_') {
+      break;
+    }
   }
   var[var_index] = '\0'; // Null-terminate the string
 
