@@ -19,8 +19,8 @@ run: compile
 testPowTwo: $(TESTO)
 	-./tmp ${CC} -o $@ $^ -lm
 
-runTest: powTest
-	./powTest
+runTest: testPowTwo
+	./testPowTwo
 
 clean:
 	rm -f *.o compile testPowTwo
